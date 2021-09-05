@@ -41,6 +41,7 @@ module.exports = {
         /**
          *  Content Plugins
          */
+        [`gatsby-plugin-postcss`],
         {
             resolve: `gatsby-source-filesystem`,
             options: {
