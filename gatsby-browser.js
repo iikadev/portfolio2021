@@ -1,5 +1,5 @@
 /* eslint-disable */
-import './src/styles/global.css';
+require('./src/styles/global.css');
 
 /**
  * Trust All Scripts
