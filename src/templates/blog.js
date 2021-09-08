@@ -17,33 +17,53 @@ import { MetaData } from '../components/common/meta'
 * in /utils/siteConfig.js under `postsPerPage`.
 *
 */
-const Index = ({ location, pageContext }) => {
-    // const posts = data.allGhostPost.edges
-
+const Blog = ({ data, location, pageContext }) => {
+    const posts = data.allGhostPost.edges
+	const displayPosts = []
+	posts.map(({ node }) => {
+		let projectCheck = false
+		projectCheck = node.tags.map((tag) => {
+			if (tag.name.includes(`cat-projects`)){
+				return true
+			}
+		})
+		if (projectCheck[0] !== true){
+			return displayPosts.push(node)
+		}
+	})
     return (
         <>
             <MetaData location={location} />
-            <Layout isHome={true}>
+            <Layout>
                 <div className="container">
-					<h1>Home Page</h1>
+					<h1>Helloworld</h1>
+                    <section className="post-feed">
+                        {displayPosts.map(post => (
+                            // The tag below includes the markup for each post - components/common/PostCard.js
+                            <PostCard key={post.id} post={post} postType="blog"/>
+                        ))}
+                    </section>
+                    <Pagination pageContext={pageContext} />
                 </div>
             </Layout>
         </>
     )
 }
 
-Index.propTypes = {
+Blog.propTypes = {
+    data: PropTypes.shape({
+        allGhostPost: PropTypes.object.isRequired,
+    }).isRequired,
     location: PropTypes.shape({
         pathname: PropTypes.string.isRequired,
     }).isRequired,
     pageContext: PropTypes.object,
 }
 
-export default Index
+export default Blog
 
 // This page query loads all posts sorted descending by published date
 // The `limit` and `skip` values are used for pagination
-/*
 export const pageQuery = graphql`
   query GhostPostQuery($limit: Int!, $skip: Int!) {
     allGhostPost(
@@ -58,4 +78,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`*/
+`

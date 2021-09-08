@@ -1,3 +1,6 @@
+/* eslint-disable no-confusing-arrow */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable indent */
 const path = require(`path`)
 const { postsPerPage } = require(`./src/utils/siteConfig`)
 const { paginate } = require(`gatsby-awesome-pagination`)
@@ -15,6 +18,10 @@ exports.createPages = async ({ graphql, actions }) => {
                 edges {
                     node {
                         slug
+						tags {
+							name
+							visibility
+						}
                     }
                 }
             }
@@ -64,6 +71,8 @@ exports.createPages = async ({ graphql, actions }) => {
     const authorTemplate = path.resolve(`./src/templates/author.js`)
     const pageTemplate = path.resolve(`./src/templates/page.js`)
     const postTemplate = path.resolve(`./src/templates/post.js`)
+	const projectsTemplate = path.resolve(`./src/templates/projects.js`)
+	const blogTemplate = path.resolve(`./src/templates/blog.js`)
 
     // Create tag pages
     tags.forEach(({ node }) => {
@@ -73,7 +82,7 @@ exports.createPages = async ({ graphql, actions }) => {
         // a `/tag/:slug/` permalink.
         const url = `/tag/${node.slug}`
 
-        const items = Array.from({length: totalPosts})
+        const items = Array.from({ length: totalPosts })
 
         // Create pagination
         paginate({
@@ -83,8 +92,8 @@ exports.createPages = async ({ graphql, actions }) => {
             component: tagsTemplate,
             pathPrefix: ({ pageNumber }) => (pageNumber === 0) ? url : `${url}/page`,
             context: {
-                slug: node.slug
-            }
+                slug: node.slug,
+            },
         })
     })
 
@@ -96,9 +105,9 @@ exports.createPages = async ({ graphql, actions }) => {
         // a `/author/:slug/` permalink.
         const url = `/author/${node.slug}`
 
-        const items = Array.from({length: totalPosts})
+        const items = Array.from({ length: totalPosts })
 
-        // Create pagination
+        // Create pagination 
         paginate({
             createPage,
             items: items,
@@ -106,8 +115,8 @@ exports.createPages = async ({ graphql, actions }) => {
             component: authorTemplate,
             pathPrefix: ({ pageNumber }) => (pageNumber === 0) ? url : `${url}/page`,
             context: {
-                slug: node.slug
-            }
+                slug: node.slug,
+            },
         })
     })
 
@@ -116,35 +125,80 @@ exports.createPages = async ({ graphql, actions }) => {
         // This part here defines, that our pages will use
         // a `/:slug/` permalink.
         node.url = `/${node.slug}/`
-
-        createPage({
-            path: node.url,
-            component: pageTemplate,
-            context: {
-                // Data passed to context is available
-                // in page queries as GraphQL variables.
-                slug: node.slug,
-            },
-        })
+		if (node.slug === `blog`){
+			paginate({
+				createPage,
+				items: posts,
+				itemsPerPage: postsPerPage,
+				component: blogTemplate,
+				pathPrefix: ({ pageNumber }) => {
+					if (pageNumber === 0) {
+						return `/blog`
+					} else {
+						return `/blog/page`
+					}
+				},
+			})
+		} else if (node.slug === `projects`){
+			paginate({
+				createPage,
+				items: posts,
+				itemsPerPage: postsPerPage,
+				component: projectsTemplate,
+				pathPrefix: ({ pageNumber }) => {
+					if (pageNumber === 0) {
+						return `/projects`
+					} else {
+						return `/projects/page`
+					}
+				},
+			})			
+		} else {
+			createPage({
+				path: node.url,
+				component: pageTemplate,
+				context: {
+					// Data passed to context is available
+					// in page queries as GraphQL variables.
+					slug: node.slug,
+				},
+			})
+		}
     })
 
     // Create post pages
     posts.forEach(({ node }) => {
+		const tagList = node.tags.map(tag => tag.name)
+
         // This part here defines, that our posts will use
         // a `/:slug/` permalink.
         node.url = `/${node.slug}/`
 
-        createPage({
-            path: node.url,
-            component: postTemplate,
-            context: {
-                // Data passed to context is available
-                // in page queries as GraphQL variables.
-                slug: node.slug,
-            },
-        })
+		// if tagList includes tag=cat-projects then it renders differently
+		if (tagList.includes(`cat-projects`)) {
+			createPage({
+				path: `/cat-projects/${node.slug}`,
+				component: postTemplate,
+				context: {
+					// Data passed to context is available
+					// in page queries as GraphQL variables.
+					slug: node.slug,
+				},
+			})
+		} else {
+			createPage({
+				path: `/blog/${node.slug}`,
+				component: postTemplate,
+				context: {
+					// Data passed to context is available
+					// in page queries as GraphQL variables.
+					slug: node.slug,
+				},
+			})
+		}
     })
 
+	/*
     // Create pagination
     paginate({
         createPage,
@@ -159,4 +213,16 @@ exports.createPages = async ({ graphql, actions }) => {
             }
         },
     })
+	*/
+
+	// root page
+	createPage({
+		path: `/`,
+		component: indexTemplate,
+		context: {
+			// Data passed to context is available
+			// in page queries as GraphQL variables.
+			slug: `/`,
+		},
+	})
 }
