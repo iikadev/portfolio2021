@@ -17,8 +17,23 @@ import { MetaData } from '../components/common/meta'
 * in /utils/siteConfig.js under `postsPerPage`.
 *
 */
-const Index = ({ location, pageContext }) => {
-    // const posts = data.allGhostPost.edges
+const Index = ({location, pageContext }) => {
+    const posts = pageContext.posts
+	const displayArticles = [] // blog array
+	const displayProjects = [] // projects array
+
+	posts.map(({ node }) => {
+		node.tags.map((tag) => {
+			if (tag.name.includes(`featured-blog`)){
+				return displayArticles.push(node)
+			}
+			if (tag.name.includes(`cat-projects`)){
+				return displayProjects.push(node)
+			}
+		})
+	})
+	//console.log(displayProjects)
+	//console.log(pageContext)
 
     return (
         <>
@@ -41,21 +56,3 @@ Index.propTypes = {
 
 export default Index
 
-// This page query loads all posts sorted descending by published date
-// The `limit` and `skip` values are used for pagination
-/*
-export const pageQuery = graphql`
-  query GhostPostQuery($limit: Int!, $skip: Int!) {
-    allGhostPost(
-        sort: { order: DESC, fields: [published_at] },
-        limit: $limit,
-        skip: $skip
-    ) {
-      edges {
-        node {
-          ...GhostPostFields
-        }
-      }
-    }
-  }
-`*/
