@@ -5,7 +5,6 @@ import { Link, StaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
 import { Navigation } from '.'
-import config from '../../utils/siteConfig'
 
 // Styles
 import '../../styles/app.css'
@@ -18,7 +17,7 @@ import '../../styles/app.css'
 * styles, and meta data for each page.
 *
 */
-const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
+const DefaultLayout = ({ data, children, bodyClass }) => {
     const site = data.allGhostSettings.edges[0].node
     const twitterUrl = site.twitter ? `https://twitter.com/${site.twitter.replace(/^@/, ``)}` : null
     const facebookUrl = site.facebook ? `https://www.facebook.com/${site.facebook.replace(/^\//, ``)}` : null
@@ -36,7 +35,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 <div className="viewport-top">
                     {/* The main header section on top of the screen */}
                     <header className="site-head">
-                    {/* <header className="site-head" style={{ ...site.cover_image && { backgroundImage: `url(${site.cover_image})` } }}> */}
+                        {/* <header className="site-head" style={{ ...site.cover_image && { backgroundImage: `url(${site.cover_image})` } }}> */}
                         <div className="container">
                             <div className="site-mast">
                                 <div className="site-mast-left">

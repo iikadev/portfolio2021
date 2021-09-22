@@ -17,7 +17,7 @@ import { MetaData } from '../components/common/meta'
 * in /utils/siteConfig.js under `postsPerPage`.
 *
 */
-const Index = ({location, pageContext }) => {
+const Index = ({ location, pageContext }) => {
     const posts = pageContext.posts
 	const displayArticles = [] // blog array
 	const displayProjects = [] // projects array
@@ -41,9 +41,9 @@ const Index = ({location, pageContext }) => {
             <Layout isHome={true}>
                 <div className="container">
 					<h1>Home Page</h1>
-					{AboutPage}
-					{Blog}
-					{ContactPage}
+					<AboutPage />
+					<Blog />
+					<ContactPage />
 					<p>bruh</p>
                 </div>
             </Layout>

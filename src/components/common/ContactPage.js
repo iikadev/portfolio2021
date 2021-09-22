@@ -1,11 +1,12 @@
-import React from 'react';
-import Img from 'gatsby-image'
+/*eslint arrow-body-style: ["error", "always"]*/
+
+import React from 'react'
 
 const ContactPage = () => {
     return (
         <div>
 
-             <section class="home_contact">
+            <section className="home_contact">
                 <div>
                     {/* insert img logo */}
                     <h2>Contact</h2>
@@ -18,32 +19,32 @@ const ContactPage = () => {
                 </div>
 
                 <form>
-                    <label for="name">
+                    <label htmlFor="name">
                         <input
-                        id="name"
-                        name="name"
-                        type="text"
-                        placeholder="Name" />
+                            id="name"
+                            name="name"
+                            type="text"
+                            placeholder="Name" />
                     </label>
 
-                    <label for="email">
+                    <label htmlFor="email">
                         <input 
-                        id="email"
-                        name="email" 
-                        type="text" 
-                        placeholder="Email Address" 
-                        required />
+                            id="email"
+                            name="email" 
+                            type="text" 
+                            placeholder="Email Address" 
+                            required />
                     </label>
 
-                    <label for="subject">
+                    <label htmlFor="subject">
                         <input
-                        id="subject"
-                        name="subject"
-                        type="text"
-                        placeholder="Subject" />
+                            id="subject"
+                            name="subject"
+                            type="text"
+                            placeholder="Subject" />
                     </label>
 
-                    <label for="message">
+                    <label htmlFor="message">
                         <textarea 
                             id="message" 
                             name="message" 
@@ -52,7 +53,7 @@ const ContactPage = () => {
                         </textarea>           
                     </label>
 
-                    <button class="generic-btn" type="submit">Send Message</button>
+                    <button className="generic-btn" type="submit">Send Message</button>
                 </form>
             </section>
 

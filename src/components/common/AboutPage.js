@@ -1,9 +1,11 @@
+/*eslint arrow-body-style: ["error", "always"]*/
+
 import React from 'react'
 
 const AboutPage = () => {
     return (
         <div>
-            <section class="about">
+ 			<section className="about">
                 <h1>About Me</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                     labore et dolore magna aliqua Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi 
@@ -11,9 +13,8 @@ const AboutPage = () => {
                     cillum dolore eu fugiat nulla pariatur.</p>
                 <p>Download my <a id="resume-btn" href="#">Resume</a></p>
             </section>
-            <section class="skills">
+            <section className="skills">
                 <p>Frontend Development, UI/UX Design</p>
-                <!-- relevant logos added using css-->
                 <div>
                     <ul>
                         <li>html</li>
@@ -33,7 +34,7 @@ const AboutPage = () => {
                     </ul>
                 </div>
             </section>
-            <section class="education">
+            <section className="education">
                 <div>
                     {/* insert fullsail logo image */}
                     <h3>Web Development & Design Bachelor</h3>
