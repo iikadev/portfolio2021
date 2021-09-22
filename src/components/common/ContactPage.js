@@ -4,7 +4,7 @@ import React from 'react'
 
 const ContactPage = () => {
     return (
-        <div>
+        <div className="contact_container">
 
             <section className="home_contact">
                 <div>
@@ -18,7 +18,7 @@ const ContactPage = () => {
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
                 </div>
 
-                <form>
+                <form className="contact_form">
                     <label htmlFor="name">
                         <input
                             id="name"

@@ -185,10 +185,10 @@ exports.createPages = async ({ graphql, actions }) => {
         // a `/:slug/` permalink.
         node.url = `/${node.slug}/`
 
-		// if tagList includes tag=cat-projects then it renders differently
-		if (tagList.includes(`cat-projects`)) {
+		// if tagList includes tag=project then it renders differently
+		if (tagList.includes(`project`)) {
 			createPage({
-				path: `/cat-projects/${node.slug}`,
+				path: `/project/${node.slug}`,
 				component: postTemplate,
 				context: {
 					// Data passed to context is available

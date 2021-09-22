@@ -5,7 +5,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-// import { Helmet } from 'react-helmet'
 
 import { Layout } from '../components/common'
 import { MetaData } from '../components/common/meta'
@@ -26,11 +25,6 @@ const Projects = ({ data, location }) => {
                 location={location}
                 type="website"
             />
-			{/* 
-			<Helmet>
-                <style type="text/css">{`${page.codeinjection_styles}`}</style>
-            </Helmet>
-			*/}
             <Layout>
                 <div className="container">
                     <h1>Projects Page</h1>

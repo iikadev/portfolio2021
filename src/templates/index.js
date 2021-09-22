@@ -5,8 +5,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
+import { Link } from 'gatsby'
 
-import { Layout, PostCard, Pagination, Blog, ContactPage, AboutPage } from '../components/common'
+import { Layout, PostCard, Pagination, BlogPage, ContactPage, AboutPage, ProjectPage } from '../components/common'
 import { MetaData } from '../components/common/meta'
 
 /**
@@ -32,20 +33,22 @@ const Index = ({ location, pageContext }) => {
 			}
 		})
 	})
-	//console.log(displayProjects)
-	//console.log(pageContext)
 
     return (
         <>
             <MetaData location={location} />
             <Layout isHome={true}>
+				<div className="home-hero">
+					<h2>Skylar Valerio</h2>
+					<p>lorem ipsum dolor sit amet</p>
+					<Link to='/about'>About Me</Link>
+				</div>
                 <div className="container">
-					<h1>Home Page</h1>
+					<ProjectPage />
 					<AboutPage />
-					<Blog />
-					<ContactPage />
-					<p>bruh</p>
+					<BlogPage />
                 </div>
+				<ContactPage />
             </Layout>
         </>
     )
