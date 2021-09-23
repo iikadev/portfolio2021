@@ -5,6 +5,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
+import { PostCard } from '../components/common'
 
 import { Layout } from '../components/common'
 import { MetaData } from '../components/common/meta'
@@ -16,7 +17,15 @@ import { MetaData } from '../components/common/meta'
 *
 */
 const Projects = ({ data, location }) => {
-    //const page = data.ghostPage
+    const posts = data.allGhostPost.edges
+	const displayPosts = []
+	posts.map(({ node }) => {
+		node.tags.map((tag) => {
+			if (tag.name.includes(`project`)){
+				return displayPosts.push(node)
+			}
+		})
+	})
 
     return (
         <>
@@ -28,6 +37,12 @@ const Projects = ({ data, location }) => {
             <Layout>
                 <div className="container">
                     <h1>Projects Page</h1>
+                    <section className="post-feed">
+                        {displayPosts.map(post => (
+                            // The tag below includes the markup for each post - components/common/PostCard.js
+                            <PostCard key={post.id} post={post} postType="blog"/>
+                        ))}
+                    </section>
                 </div>
             </Layout>
         </>
@@ -48,10 +63,18 @@ Projects.propTypes = {
 
 export default Projects
 
-export const postQuery = graphql`
-    query($slug: String!) {
-        ghostPage(slug: { eq: $slug }) {
-            ...GhostPageFields
+export const pageQuery = graphql`
+    query ghostPostQueryAndGhostPostQuery($limit: Int!, $skip: Int!) {
+        allGhostPost(
+            sort: { order: DESC, fields: [published_at] },
+            limit: $limit,
+            skip: $skip
+        ) {
+        edges {
+            node {
+            ...GhostPostFields
+            }
         }
     }
+  }
 `

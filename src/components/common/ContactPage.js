@@ -8,7 +8,6 @@ const ContactPage = () => {
 
             <section className="home_contact">
                 <div>
-                    {/* insert img logo */}
                     <h2>Contact</h2>
                     <p>Skylar Valerio</p>
                     <p>Orlando,FL</p>
@@ -18,7 +17,8 @@ const ContactPage = () => {
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
                 </div>
 
-                <form className="contact_form">
+                <form className="contact_form" name="contact" method="post" data-netlify="true" data-netlify-honeypot="bot-field">
+                
                     <label htmlFor="name">
                         <input
                             id="name"
@@ -53,10 +53,13 @@ const ContactPage = () => {
                         </textarea>           
                     </label>
 
-                    <button className="generic-btn" type="submit">Send Message</button>
-                </form>
-            </section>
+                    <input type="hidden" name="form-name" value="contact" />
 
+                    <button className="generic-btn" type="submit">Send Message</button>
+    
+                </form>
+
+            </section>
         </div>
     )
 }

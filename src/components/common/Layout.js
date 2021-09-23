@@ -17,10 +17,13 @@ import '../../styles/app.css'
 * styles, and meta data for each page.
 *
 */
-const DefaultLayout = ({ data, children, bodyClass }) => {
+const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
     const site = data.allGhostSettings.edges[0].node
     const twitterUrl = site.twitter ? `https://twitter.com/${site.twitter.replace(/^@/, ``)}` : null
     const facebookUrl = site.facebook ? `https://www.facebook.com/${site.facebook.replace(/^\//, ``)}` : null
+    const linkedInUrl = `https://www.linkedin.com/in/skyvale/`
+
+    console.log({isHome});
 
     return (
         <>
@@ -56,6 +59,7 @@ const DefaultLayout = ({ data, children, bodyClass }) => {
                                     </nav>
                                     { site.twitter && <a href={ twitterUrl } className="site-nav-item" target="_blank" rel="noopener noreferrer"><img className="site-nav-icon" src="/images/icons/twitter.svg" alt="Twitter" /></a>}
                                     { site.facebook && <a href={ facebookUrl } className="site-nav-item" target="_blank" rel="noopener noreferrer"><img className="site-nav-icon" src="/images/icons/facebook.svg" alt="Facebook" /></a>}
+                                    <a href={ linkedInUrl } className="site-nav-item" target="_blank" rel="noopener noreferrer"><img className="site-nav-icon" src="/images/icons/linkedin_logo.png" alt="LinkedIn" /></a>
                                 </div>
 
                             </div>
@@ -73,17 +77,19 @@ const DefaultLayout = ({ data, children, bodyClass }) => {
 
                 <div className="viewport-bottom">
                     {/* The footer at the very bottom of the screen */}
-                    <footer className="site-foot">
-                        <div className="site-foot-nav container">
-                            <div className="site-foot-nav-left">
-                                <Link to="/">{site.title}</Link> © 2021 &mdash; Published with <a className="site-foot-nav-item" href="https://ghost.org" target="_blank" rel="noopener noreferrer">Ghost</a>
+                    { isHome !== true 
+                        ? <footer className="site-foot">
+                            <div className="site-foot-nav container">
+                                <div className="site-foot-nav-left">
+                                    <Link to="/">{site.title}</Link> © 2021 &mdash; Published with <a className="site-foot-nav-item" href="https://ghost.org" target="_blank" rel="noopener noreferrer">Ghost</a>
+                                </div>
+                                <div className="site-foot-nav-right">
+                                    <Navigation data={site.navigation} navClass="site-foot-nav-item" />
+                                </div>
                             </div>
-                            <div className="site-foot-nav-right">
-                                <Navigation data={site.navigation} navClass="site-foot-nav-item" />
-                            </div>
-                        </div>
-                    </footer>
-
+                        </footer>
+                        : null
+                    } 
                 </div>
             </div>
 

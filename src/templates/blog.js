@@ -23,7 +23,7 @@ const Blog = ({ data, location, pageContext }) => {
 	posts.map(({ node }) => {
 		let projectCheck = false
 		projectCheck = node.tags.map((tag) => {
-			if (tag.name.includes(`cat-projects`)){
+			if (tag.name.includes(`project`)){
 				return true
 			}
 		})
@@ -36,7 +36,7 @@ const Blog = ({ data, location, pageContext }) => {
             <MetaData location={location} />
             <Layout>
                 <div className="container">
-					<h1>Helloworld</h1>
+					<h1>Blog Page</h1>
                     <section className="post-feed">
                         {displayPosts.map(post => (
                             // The tag below includes the markup for each post - components/common/PostCard.js

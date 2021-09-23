@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import { Link } from 'gatsby'
 
-import { Layout, PostCard, Pagination, BlogPage, ContactPage, AboutPage, ProjectPage } from '../components/common'
+import { Layout, PostCard, Pagination, BlogPage, ContactPage, SkillsPage, ProjectPage } from '../components/common'
 import { MetaData } from '../components/common/meta'
 
 /**
@@ -41,11 +41,11 @@ const Index = ({ location, pageContext }) => {
 				<div className="home-hero">
 					<h2>Skylar Valerio</h2>
 					<p>lorem ipsum dolor sit amet</p>
-					<Link to='/about'>About Me</Link>
+					<Link to='/skills'>About Me</Link>
 				</div>
                 <div className="container">
 					<ProjectPage />
-					<AboutPage />
+					<SkillsPage />
 					<BlogPage />
                 </div>
 				<ContactPage />

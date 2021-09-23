@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-const AboutPage = () => {
+const SkillsPage = () => {
     return (
         <div>
  			<section className="about">
@@ -45,5 +45,5 @@ const AboutPage = () => {
     )
 }
 
-export default AboutPage
+export default SkillsPage
 
