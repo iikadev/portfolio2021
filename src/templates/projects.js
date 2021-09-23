@@ -36,7 +36,7 @@ const Projects = ({ data, location }) => {
             />
             <Layout>
                 <div className="container">
-                    <h1>Projects Page</h1>
+                    <h1>Projects</h1>
                     <section className="post-feed">
                         {displayPosts.map(post => (
                             // The tag below includes the markup for each post - components/common/PostCard.js

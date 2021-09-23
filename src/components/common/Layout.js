@@ -19,11 +19,8 @@ import '../../styles/app.css'
 */
 const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
     const site = data.allGhostSettings.edges[0].node
-    const twitterUrl = site.twitter ? `https://twitter.com/${site.twitter.replace(/^@/, ``)}` : null
-    const facebookUrl = site.facebook ? `https://www.facebook.com/${site.facebook.replace(/^\//, ``)}` : null
     const linkedInUrl = `https://www.linkedin.com/in/skyvale/`
-
-    console.log({isHome});
+    const GitHubUrl = `https://github.com/skyvale`
 
     return (
         <>
@@ -57,9 +54,8 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                             <Navigation data={site.navigation} navClass="site-nav-item" />
                                         </div>
                                     </nav>
-                                    { site.twitter && <a href={ twitterUrl } className="site-nav-item" target="_blank" rel="noopener noreferrer"><img className="site-nav-icon" src="/images/icons/twitter.svg" alt="Twitter" /></a>}
-                                    { site.facebook && <a href={ facebookUrl } className="site-nav-item" target="_blank" rel="noopener noreferrer"><img className="site-nav-icon" src="/images/icons/facebook.svg" alt="Facebook" /></a>}
-                                    <a href={ linkedInUrl } className="site-nav-item" target="_blank" rel="noopener noreferrer"><img className="site-nav-icon" src="/images/icons/linkedin_logo.png" alt="LinkedIn" /></a>
+                                    <a href={ linkedInUrl } className="site-nav-item" target="_blank" rel="noopener noreferrer"><img className="site-nav-icon" src="/images/icons/linkedin.svg" alt="LinkedIn" /></a>
+                                    <a href={ GitHubUrl } className="site-nav-item" target="_blank" rel="noopener noreferrer"><img className="site-nav-icon" src="/images/icons/github.svg" alt="GitHhub" /></a>
                                 </div>
 
                             </div>
