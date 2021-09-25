@@ -17,11 +17,20 @@ exports.createPages = async ({ graphql, actions }) => {
             allGhostPost(sort: { order: ASC, fields: published_at }) {
                 edges {
                     node {
-                        slug
-						tags {
-							name
-							visibility
-						}
+                      slug
+                      tags {
+                        name
+                        visibility
+                      }
+                      feature_image
+                      excerpt
+                      featured
+                      primary_author {
+                        profile_image
+                        name
+                      }
+                      title
+                      id
                     }
                 }
             }

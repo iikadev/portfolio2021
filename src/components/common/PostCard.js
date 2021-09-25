@@ -6,7 +6,7 @@ import { readingTime as readingTimeHelper } from '@tryghost/helpers'
 
 const PostCard = ({ post, postType }) => {
 	// the . = 'blog' which is the current directory
-    const url = `./${post.slug}/` //!!TODO breaking the pagination blog links
+    const url = `./${post.slug}/` 
     const readingTime = readingTimeHelper(post)
 
     return (

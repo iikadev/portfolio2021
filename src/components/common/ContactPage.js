@@ -7,14 +7,14 @@ const ContactPage = () => {
         <div className="contact_container">
 
             <section className="home_contact">
-                <div>
+                <div className="info-excerpt">
                     <h2>Contact</h2>
                     <p>Skylar Valerio</p>
                     <p>Orlando,FL</p>
-
                     <p>skyvale@yahoo.com</p>
                     <p>407-476-7288</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                    <p>If you have any questions and would like to contact me, you can reach me by my cell phone or email! 
+                    Alternatively, you can fill out the form below. I will get back to you as soon as possible!</p>
                 </div>
 
                 <form className="contact_form" name="contact" method="post" data-netlify="true" data-netlify-honeypot="bot-field">

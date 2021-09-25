@@ -7,11 +7,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import { Link } from 'gatsby'
-import figma from '../../public/images/icons/figma.svg'
 
 import { Layout, PostCard, Pagination, BlogPage, ContactPage, SkillsPage, ProjectPage } from '../components/common'
-//import Projects from './projects'
+import Projects from './projects'
 import { MetaData } from '../components/common/meta'
+import Particles from 'react-particles-js'
 
 /**
 * Main index page (home page)
@@ -25,13 +25,29 @@ const Index = ({ location, pageContext }) => {
     const posts = pageContext.posts
 	const displayArticles = [] // blog array
 	const displayProjects = [] // projects array
+	console.log({posts});
+
+	// limits how many posts appear
+	let amountProjects = 0;
+	let amountArticles = 0;
+	let limitProjects = 3;
+	let limitArticles = 4;
 
 	posts.map(({ node }) => {
 		node.tags.map((tag) => {
-			if (tag.name.includes(`featured-blog`)){
+			if (tag.name.includes(`blog`)){
+				amountArticles++;
+				if (amountArticles >= limitArticles) {
+					return
+				}
 				return displayArticles.push(node)
 			}
-			if (tag.name.includes(`cat-projects`)){
+			if (tag.name.includes(`project`)){
+				amountProjects++;
+				console.log("amount:", amountProjects)
+				if (amountProjects > limitProjects) {
+					return
+				}
 				return displayProjects.push(node)
 			}
 		})
@@ -43,15 +59,63 @@ const Index = ({ location, pageContext }) => {
             <Layout isHome={true}>
 
 				<div className="home-hero">
-					<h2>Skylar Valerio</h2>
-					<p>Frontend UI/UX Designer</p>
-					<Link to="/skills">About Me</Link>
+					<div className="hero-info"> 
+						<h2>Skylar Valerio</h2>
+						<p>Frontend UI/UX Designer</p>
+						<Link to="/skills">About Me</Link>
+					</div>
+					<div className="particle-effect">
+						<Particles 
+							params={{
+								background: {
+								color: {
+									value: "#000"
+								}
+								},
+								particles: {
+								number: {
+									value: 80,
+									density: {
+										enable: false
+									}
+								},
+								shape: {
+									type: "triangle"
+								},
+								size: {
+									value: 5,
+									random: true
+								},
+								move: {
+									direction: "none",
+									outMode: "out"
+								},
+								links: {
+									enable: false
+								}
+								},
+								interactivity: {
+								events: {
+									onHover: {
+									enable: true,
+									mode: "repulse"
+									}
+								},
+								}
+							}} />
+					</div>
 				</div>
 
                 <div className="container">
 					<div>
 						<h1>Projects</h1>
 						<p>Container for Projects</p>
+						<section className="post-feed">
+							{displayProjects.map(post => {
+								console.log(post);
+								return <PostCard key={post.id} post={post} postType="blog"/>
+							})}
+                    	</section>
 					</div>
 				</div>
 
@@ -94,14 +158,23 @@ const Index = ({ location, pageContext }) => {
 				<div className="container"> 
 					<BlogPage />
                 </div>
-
-				<ContactPage />
+				<div className="contactpage-container">
+					<ContactPage />
+				</div>
             </Layout>
         </>
     )
 }
 
 Index.propTypes = {
+	data: PropTypes.shape({
+        ghostPage: PropTypes.shape({
+            codeinjection_styles: PropTypes.object,
+            title: PropTypes.string.isRequired,
+            html: PropTypes.string.isRequired,
+            feature_image: PropTypes.string,
+        }).isRequired,
+    }).isRequired,
     location: PropTypes.shape({
         pathname: PropTypes.string.isRequired,
     }).isRequired,
@@ -109,4 +182,6 @@ Index.propTypes = {
 }
 
 export default Index
+
+
 
