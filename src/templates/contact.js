@@ -15,7 +15,6 @@ const Contact = ({ location }) => {
             <MetaData location={location} />
             <Layout>
                 <div className="container">
-					<h1>Contact Page</h1>
                     <ContactPage />
                 </div>
             </Layout>

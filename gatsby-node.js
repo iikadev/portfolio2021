@@ -82,6 +82,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const postTemplate = path.resolve(`./src/templates/post.js`)
 	const projectsTemplate = path.resolve(`./src/templates/projects.js`)
 	const blogTemplate = path.resolve(`./src/templates/blog.js`)
+    const skillsTemplate = path.resolve(`./src/templates/skills.js`)
     const contactTemplate = path.resolve(`./src/templates/contact.js`)
 
     // Create tag pages
@@ -173,7 +174,17 @@ exports.createPages = async ({ graphql, actions }) => {
 					slug: node.slug,
 				},
 			})
-		} else {
+		} else if (node.slug === `skills`){
+            createPage({
+				path: node.url,
+				component: skillsTemplate,
+				context: {
+					// Data passed to context is available
+					// in page queries as GraphQL variables.
+					slug: node.slug,
+				},
+			})
+        } else {
 			createPage({
 				path: node.url,
 				component: pageTemplate,

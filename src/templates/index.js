@@ -9,9 +9,15 @@ import { graphql } from 'gatsby'
 import { Link } from 'gatsby'
 
 import { Layout, PostCard, Pagination, BlogPage, ContactPage, SkillsPage, ProjectPage } from '../components/common'
-import Projects from './projects'
 import { MetaData } from '../components/common/meta'
+
 import Particles from 'react-particles-js'
+import HtmlIcon from '../images/html.svg'
+import CssIcon from '../images/css.svg'
+import JsIcon from '../images/javascript.svg'
+import ReactIcon from '../images/react.svg'
+import PsIcon from '../images/photoshop.svg'
+import FigmaIcon from '../images/figma.svg'
 
 /**
 * Main index page (home page)
@@ -62,7 +68,9 @@ const Index = ({ location, pageContext }) => {
 					<div className="hero-info"> 
 						<h2>Skylar Valerio</h2>
 						<p>Frontend UI/UX Designer</p>
-						<Link to="/skills">About Me</Link>
+						<Link to="/skills">
+							<button className="generic-btn">About Me</button>
+						</Link>
 					</div>
 					<div className="particle-effect">
 						<Particles 
@@ -88,10 +96,11 @@ const Index = ({ location, pageContext }) => {
 								},
 								move: {
 									direction: "none",
-									outMode: "out"
+									outMode: "out",
+									speed: 1
 								},
 								links: {
-									enable: false
+									enable: true
 								}
 								},
 								interactivity: {
@@ -107,58 +116,70 @@ const Index = ({ location, pageContext }) => {
 				</div>
 
                 <div className="container">
-					<div>
+					<div className="home-posts-section">
 						<h1>Projects</h1>
-						<p>Container for Projects</p>
 						<section className="post-feed">
 							{displayProjects.map(post => {
 								console.log(post);
 								return <PostCard key={post.id} post={post} postType="blog"/>
 							})}
                     	</section>
+						<Link to="/projects">
+							<button id="home-projects-btn" className="generic-btn">See More</button>
+						</Link>	
 					</div>
 				</div>
 
 				<div className="info-container">
 					<section className="info-section">
 						<h2>About Me</h2>
-							<div>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing 
-								elit, sed do eiusmod tempor incididunt ut labore et 
-								dolore magna aliqua. Ut enim ad minim veniam, quis 
-								nostrud exercitation ullamco laboris nisi ut aliquip 
-								ex ea commodo consequat. </p>
-								<p>Duis aute irure dolor in reprehenderit in voluptate velit 
-								esse cillum dolore eu fugiat nulla pariatur. Excepteur + 
-								occaecat cupidatat non proident, sunt in culpa qui officia 
-								deserunt mollit anim id est laborum.</p>
+							<div className="intro-blurb">
+								<p>Hello, I'm Sky and I'm a frontend web developer with a penchant for modern, aesthetic designs.
+								While I'm relatively new to the industry, I consider myself a hard-worker and a determined learner!</p>
+								<p>As someone who came from a creative background, I didn't have a natural affinity for coding and logic. I've 
+								worked hard these past couple years and I believe that my previous experience with design is a boon for my 
+								web development skills! Creativity and coding go hand in hand. I'd love the chance to tackle new projects, so if 
+								you're in need of a web developer or designer (or both!) than please don't hesitate to contact me!</p>
 							</div>
-							<h2>Skills</h2>
-							<div>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing 
-								elit, sed do eiusmod tempor incididunt ut labore et 
-								dolore magna aliqua.</p>
-								<div>
-									<img className="skill-img-big" src="/images/icons/html.svg" alt="HTML"></img>
-									<img className="skill-img-big" src="/images/icons/css.svg" alt="CSS"></img>
-									<img className="skill-img-big" src="/images/icons/javascript.svg" alt="JavaScript"></img>
-									<img className="skill-img-big" src="/images/icons/react.svg" alt="React"></img>
-									<img className="skill-img-big" src="/images/icons/photoshop.svg" alt="Adobe Photoshop CC"></img>
-									<img className="skill-img-big" src="/images/icons/figma.svg" alt="Figma"></img>
+						<h2>Skills</h2>
+							<div className="homepage-skills-sect">
+								<p>Here are some of the technologies I use most often. I'm familiar with many other web development and 
+									graphic design technologies though! 
+								</p>
+								<div className="homepage-skill-list">
+									<img className="skill-img-big" src={HtmlIcon} alt="HTML"></img>
+									<img className="skill-img-big" src={CssIcon} alt="CSS"></img>
+									<img className="skill-img-big" src={JsIcon} alt="JavaScript"></img>
+									<img className="skill-img-big" src={ReactIcon} alt="React"></img>
+									<img className="skill-img-big" src={PsIcon} alt="Adobe Photoshop CC"></img>
+									<img className="skill-img-big" src={FigmaIcon} alt="Figma"></img>
 								</div>
 
 							</div>
-							<button className="generic-btn">Find out more</button>		
+							<Link to="/skills">
+								<button className="generic-btn">Find out more</button>
+							</Link>		
 					</section>
 					<div className="info-img">
 						<img src="https://images.pexels.com/photos/735911/pexels-photo-735911.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="filler image"></img>
 					</div>
 				</div>
 				
-				<div className="container"> 
-					<BlogPage />
-                </div>
-				<div className="contactpage-container">
+                <div className="container">
+					<div className="home-posts-section">
+						<h1>Blog</h1>
+						<section className="post-feed">
+							{displayArticles.map(post => {
+								return <PostCard key={post.id} post={post} postType="blog"/>
+							})}
+                    	</section>
+						<Link to="/blog">
+							<button id="home-blogs-btn" className="generic-btn">See More</button>
+						</Link>	
+					</div>
+				</div>
+
+				<div className="homepage-contact">
 					<ContactPage />
 				</div>
             </Layout>

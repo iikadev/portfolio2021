@@ -53,9 +53,9 @@ const ContactPage = () => {
                         </textarea>           
                     </label>
 
-                    <input type="hidden" name="form-name" value="contact" />
+                    <input type="hidden" name="contact" value="contact" />
 
-                    <button className="generic-btn" type="submit">Send Message</button>
+                    <button id="contact-form-btn" className="generic-btn" type="submit">Send Message</button>
     
                 </form>
 

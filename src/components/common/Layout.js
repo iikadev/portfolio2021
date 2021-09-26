@@ -2,9 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { Link, StaticQuery, graphql } from 'gatsby'
-import Img from 'gatsby-image'
 
 import { Navigation } from '.'
+import Logo from '../../images/skyvale_logo.svg'
+import GithubIcon from '../../images/github.svg'
+import LinkedinIcon from '../../images/linkedin.svg'
 
 // Styles
 import '../../styles/app.css'
@@ -40,10 +42,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                             <div className="site-mast">
                                 <div className="site-mast-left">
                                     <Link to="/">
-                                        {site.logo ?
-                                            <img className="site-logo" src={site.logo} alt={site.title} />
-                                            : <Img fixed={data.file.childImageSharp.fixed} alt={site.title} />
-                                        }
+                                        <img className="site-logo" src={Logo} alt="sky vale website logo" />
                                     </Link>
                                 </div>
 
@@ -54,8 +53,12 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                             <Navigation data={site.navigation} navClass="site-nav-item" />
                                         </div>
                                     </nav>
-                                    <a href={ linkedInUrl } className="site-nav-item" target="_blank" rel="noopener noreferrer"><img className="site-nav-icon" src="/images/icons/linkedin.svg" alt="LinkedIn" /></a>
-                                    <a href={ GitHubUrl } className="site-nav-item" target="_blank" rel="noopener noreferrer"><img className="site-nav-icon" src="/images/icons/github.svg" alt="GitHhub" /></a>
+                                    <a href={ linkedInUrl } className="site-nav-item" target="_blank" rel="noopener noreferrer">
+                                        <img className="site-nav-icon" src={LinkedinIcon} alt="LinkedIn" />
+                                    </a>
+                                    <a href={ GitHubUrl } className="site-nav-item" target="_blank" rel="noopener noreferrer">
+                                        <img className="site-nav-icon" src={GithubIcon} alt="GitHhub" />
+                                    </a>
                                 </div>
 
                             </div>
