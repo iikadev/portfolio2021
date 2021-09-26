@@ -1,9 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@100&display=swap');
+
 /* App.css
 /* ---------------------------------------------------------- /*
-
-These are just some base styles to get you started. You delete
-these and start over using your toolset of choice, or evolve
-what's here to work the way you'd like it to.
 
 # Table of Contents
 
@@ -19,17 +17,19 @@ what's here to work the way you'd like it to.
 /* Variables
 /* ---------------------------------------------------------- */
 
+
 :root {
 
     /* Colours */
-    --color-primary: #3eb0ef;
-    --color-base: #15171A;
-    --color-secondary: #5B7A81;
-    --color-border: #c7d5d8;
-    --color-bg: #f5f5f5;
+	--color-font: #f5f5f5;
+    --color-primary: #24F1EB;
+    --color-base: #0E1212;
+    --color-secondary: #252525;
+    --color-border: #f5f5f5;
+    --color-bg: #0E1212;
 
     /* Fonts */
-    --font-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    --font-sans-serif: 'Exo 2', sans-serif;
     --font-serif: Georgia, Times, serif;
     --font-mono: Menlo, Courier, monospace;
     --font-light: 100;
@@ -159,7 +159,7 @@ img {
 }
 html {
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: 'Exo 2', sans-serif;
 
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
@@ -218,7 +218,7 @@ code,
 kbd,
 pre,
 samp {
-    font-family: monospace, monospace;
+    font-family: 'Exo 2', sans-serif;
     font-size: 1em;
 }
 button,
@@ -309,15 +309,15 @@ html {
 
 body {
     overflow-x: hidden;
-    color: #3c484e;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    color: var(--color-font);
+	font-family: 'Exo 2', sans-serif;
     font-size: 1.5rem;
     line-height: 1.6em;
     font-weight: 400;
     font-style: normal;
     letter-spacing: 0;
     text-rendering: optimizeLegibility;
-    background: #fff;
+    background: var(--color-base);
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -357,14 +357,6 @@ fieldset {
 
 textarea {
     resize: vertical;
-}
-
-p,
-ul,
-ol,
-dl,
-blockquote {
-    margin: 0 0 1.5em 0;
 }
 
 ol,
@@ -443,11 +435,12 @@ blockquote cite a {
 }
 
 a {
-    color: #26a8ed;
+    color: var(--color-font);
     text-decoration: none;
 }
 
 a:hover {
+    color: var(--color-primary);
     text-decoration: underline;
 }
 
@@ -458,7 +451,7 @@ h4,
 h5,
 h6 {
     margin-top: 0;
-    color: var(--color-base);
+    color:  var(--color-border);
     line-height: 1.15;
     font-weight: 700;
     text-rendering: optimizeLegibility;
@@ -525,7 +518,7 @@ h6 {
 }
 
 .container {
-    max-width: 1120px;
+    max-width: 1420px;
     margin: 0 auto;
     padding: 0 4vw;
 }
@@ -545,7 +538,7 @@ h6 {
 .post-full-content {
     max-width: 720px;
     margin: 0 auto;
-    background: #fff;
+    background: var(--color-base);
 }
 
 .post-feature-image img {
@@ -627,8 +620,8 @@ h6 {
     margin: 0.5em 0;
     padding: 1em 0 1.5em;
     border: 0;
-    font-family: Georgia,serif;
-    color: var(--color-primary);
+    font-family: 'Exo 2', sans-serif;
+    color: var(--color-font);
     font-style: italic;
     font-size: 3.2rem;
     line-height: 1.35em;
@@ -683,12 +676,19 @@ h6 {
 }
 
 .site-nav-icon {
-    height: 15px;
-    margin: -5px 0 0;
+    height: 20px;
+    margin: 12px 0 0;
 }
 
 .site-logo {
-    height: 25px;
+    height: 80px;
+}
+
+.skill-img-big {
+    display: inline-block;
+	height: 50px;
+    padding: 5px 10px;
+    color: #fff;
 }
 
 .site-mast {
@@ -697,13 +697,8 @@ h6 {
     justify-content: space-between;
 }
 
-.site-mast-right {
-    display: flex;
-    align-items: center;
-}
-
-.site-mast-right .site-nav-item:last-child {
-    padding-right: 0;
+.site-nav-item:last-child {
+    padding-right: 2rem;
 }
 
 .site-banner {
@@ -736,10 +731,6 @@ h6 {
     margin: 15px 0 0 0;
 }
 
-.site-nav-left {
-    margin: 0 20px 0 -10px;
-}
-
 .site-nav-button {
     display: inline-block;
     padding: 5px 10px;
@@ -759,18 +750,42 @@ h6 {
 /* ---------------------------------------------------------- */
 
 .site-main {
-    padding: 4vw 0;
+    padding: 0;
+}
+
+.generic-btn {
+    background-color: #0E1212;
+    border: 1px solid #fff;
+    padding: 0.3rem 1rem;
+    border-radius: 10px;
 }
 
 /* Index
 /* ---------------------------------------------------------- */
+
+.home-posts-section {
+    position: relative;
+    margin: 6rem 0;
+}
+#home-projects-btn {
+    position: absolute;
+    top: 3%;
+    right: 0;
+}
+#home-blogs-btn {
+    position: absolute;
+    top: 3%;
+    right: 0;
+}
 
 .post-feed {
     display: grid;
     justify-content: space-between;
     grid-gap: 30px;
     grid-template-columns: 1fr 1fr 1fr;
+    margin-bottom: 4rem;
 }
+
 
 @media (max-width: 980px) {
     .post-feed {
@@ -858,6 +873,51 @@ h6 {
     width: 26px;
 }
 
+.home-hero {
+    position: relative;
+    height: 60rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    background-color: #252525;
+    margin-bottom: 4rem;
+}
+
+.hero-info {
+   position: absolute;
+   top: 45%;
+   left: 15%;
+}
+
+.hero-info p {
+    margin-bottom: 2rem;
+}
+
+#tsparticles {
+    height: 100%;
+}
+
+.particle-effect {
+    height: 100%;
+    width: 100%;
+}
+
+@media (max-width: 500px) {
+    .particle-effect {
+        display: none;
+    }
+    .home-hero {
+        background-image: url('https://cutewallpaper.org/21/star-constellation-wallpaper/constellation-wallpaper-Tumblr.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+
+.home-blogs {
+    margin: 4rem 0;
+}
 
 /* Tag Archives
 /* ---------------------------------------------------------- */
@@ -1160,3 +1220,296 @@ h6 {
   .kg-image-card.kg-width-wide + .kg-image-card.kg-width-wide {
     margin: -2.25em 0 3em;
   }
+
+
+/* Home Page -- Info area
+/* ---------------------------------------------------------- */
+
+.info-container {
+	display: flex;
+	flex-direction: row;
+	margin: 2rem 0rem 0 4rem;
+}
+
+.info-section {
+	flex: 1 1 0px;
+	flex-direction: column;
+	padding: 2rem;
+}
+
+.intro-blurb {
+    margin-left: 2rem;
+}
+.intro-blurb p:nth-of-type(2) {
+    margin-top: 1.5rem;
+}
+
+.info-img {
+	flex: 1 1 0px;
+}
+
+.homepage-skills-sect {
+    margin-left: 2rem;
+}
+
+.homepage-skill-list {
+    margin: 2rem 0;
+}
+
+@media (max-width: 500px) {
+    .info-container {
+        display: flex;
+        flex-direction: column;
+        margin: 0 0 6rem 0;
+    }
+    
+    .info-container button {
+        margin-bottom: 4rem;
+    }
+}
+  /* Home Page Footer
+/* ---------------------------------------------------------- */
+
+.homepage-contact {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    background-color: var(--color-secondary);
+}
+
+.contact_container {
+    display: flex;
+    justify-content: center;
+    max-width: 1120px;
+    padding: 2rem;
+    color: var(--color-border);
+    background-color: var(--color-secondary);
+}
+
+.info-excerpt {
+    position: relative;
+    text-align: center;
+}
+.info-excerpt p { 
+    margin: 0;
+}
+.info-excerpt > p:nth-of-type(2) {
+    margin-bottom: 1rem;
+}
+.info-excerpt > p:nth-of-type(3) {
+    margin: 1.5rem 0;
+}
+.info-excerpt > p:nth-of-type(3)::before {
+    position: absolute;
+    display: block;
+    top: 44%;
+    right: 57%;
+    content: "";
+    width: 16px;
+    height: 16px;
+    background: transparent url('../images/pencil.png') no-repeat;
+}
+.info-excerpt > p:nth-of-type(4) {
+    margin-bottom: 1rem;
+}
+.info-excerpt > p:nth-of-type(4)::before {
+    position: absolute;
+    display: block;
+    content: "";
+    top: 62%;
+    right: 55%;
+    width: 16px;
+    height: 16px;
+    background: transparent url('../images/phone.png') no-repeat;  
+}
+.info-excerpt > p:nth-of-type(5) {
+    max-width: 800px;
+    margin: 2rem auto 2rem;
+}
+
+@media (max-width: 980px) {
+    .info-excerpt > p:nth-of-type(3)::before {
+        top: 40%;
+        right: 65%;
+    }
+    .info-excerpt > p:nth-of-type(4)::before {
+        top: 56%;
+        right: 61%; 
+    }
+}
+@media (max-width: 500px) {
+    .info-excerpt > p:nth-of-type(3)::before {
+        top: 35%;
+        right: 70%;
+    }
+    .info-excerpt > p:nth-of-type(4)::before {
+        top: 50%;
+        right: 65%; 
+    }
+}
+
+.home_contact {
+    text-align: center;
+}
+
+.contact_form {
+    position: relative;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.contact_form input {
+    margin: 1rem;
+    color: var(--color-font);
+    border: none;
+    background-color: #0E1212;
+    padding: 0.4rem 2rem;
+    width: 460px;
+}
+#subject {
+    width: 940px;
+}
+.contact_form textarea {
+    padding: 1rem;
+    margin: 1rem 1rem 6rem 1rem;
+    width: 940px;
+    border: none;
+    color: var(--color-font);
+    background-color: #0E1212;
+    padding: 0.4rem 2rem;
+}
+
+#contact-form-btn {
+    position: absolute;
+    right: 10%;
+    bottom: 5%;
+    display: block;
+    text-align: right;
+}
+
+@media (max-width: 950px) {
+    .contact_container {
+        display: flex;
+        max-width: 400px;
+        padding: 1rem;
+    }
+
+    .contact_form {
+        position: relative;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .contact_form input {
+        width: 500px;
+    }
+    #subject {
+        width: 500px;
+    }
+    .contact_form textarea {
+        width: 500px;
+    }
+    #contact-form-btn {
+        position: absolute;
+        right: 10%;
+        bottom: 5%;
+        display: block;
+        text-align: right;
+    }
+}
+
+@media (max-width: 500px) {
+    .contact_container {
+        display: flex;
+        max-width: 400px;
+        padding: 1rem;
+    }
+
+    .contact_form {
+        position: relative;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .contact_form input {
+        width: 300px;
+    }
+    #subject {
+        width: 300px;
+    }
+    .contact_form textarea {
+        width: 300px;
+    }
+    #contact-form-btn {
+        position: absolute;
+        right: 10%;
+        bottom: 5%;
+        display: block;
+        text-align: right;
+    }
+}
+
+
+/* ------------------------------------------------ 
+    SKILLS PAGE
+   ------------------------------------------------ 
+*/
+
+.skills-container {
+    max-width: 900px;
+}
+
+.skills-section p {
+    margin-bottom: 2rem;
+}
+
+#resume-btn {
+    position: relative;
+    margin-left: 1rem;
+    padding-right: 4rem;
+}
+#resume-btn::after {
+    position: absolute;
+    top: 15%;
+    right: 0;
+    display: inline-block;
+    content: "";
+    width: 32px;
+    height: 16px;
+    background: transparent url('../images/download_icon.png') no-repeat;
+}
+.list-skills ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 4rem;
+}
+.list-skills li {
+    position: relative;
+    padding-left: 20px;
+}
+.list-skills li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: transparent url('../images/arrow.png') no-repeat;
+}
+
+.list-skills {
+    display: flex;
+    flex-direction: row;
+}
+.education-section {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10rem;
+}
+.fullsail-img {
+    width: 50px;
+    margin: 2rem;
+}

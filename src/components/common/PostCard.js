@@ -4,8 +4,9 @@ import { Link } from 'gatsby'
 import { Tags } from '@tryghost/helpers-gatsby'
 import { readingTime as readingTimeHelper } from '@tryghost/helpers'
 
-const PostCard = ({ post }) => {
-    const url = `/${post.slug}/`
+const PostCard = ({ post, postType }) => {
+	// the . = 'blog' which is the current directory
+    const url = `./${post.slug}/` 
     const readingTime = readingTimeHelper(post)
 
     return (
