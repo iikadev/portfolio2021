@@ -60,6 +60,7 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-helmet": "6.1.0",
-    "react-particles-js": "^3.5.3"
+    "react-particles-js": "^3.5.3",
+    "tsparticles": "^1.35.1"
   }
 }

@@ -13119,7 +13119,7 @@
   "resolved" "https://registry.npmjs.org/tslib/-/tslib-2.2.0.tgz"
   "version" "2.2.0"
 
-"tsparticles@^1.30.0":
+"tsparticles@^1.30.0", "tsparticles@^1.35.1":
   "integrity" "sha512-IXalxMl/H4BRunVeHrdNZuk6KoZo5BBoSQ1zab/2LVL1Bz1M+WMyS63TcFuveHRVQFsg70vsQlSE/gI7RGjgGQ=="
   "resolved" "https://registry.npmjs.org/tsparticles/-/tsparticles-1.35.1.tgz"
   "version" "1.35.1"
