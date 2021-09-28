@@ -120,7 +120,6 @@ const Index = ({ location, pageContext }) => {
 						<h1>Projects</h1>
 						<section className="post-feed">
 							{displayProjects.map(post => {
-								console.log(post);
 								return <PostCard key={post.id} post={post} postType="blog"/>
 							})}
                     	</section>
