@@ -29,10 +29,10 @@ This week, I installed and researched Tailwind CSS with my project. I'm working 
 ...
 
 **Milestone 3**:    
-...
+This week I focused on getting the backend to work. I worked on the functionality of the Projects and Blogs pages.
 
 **Milestone 4**:   
-...
+This week I finalized my website design. I ended up using vanilla CSS rather than Tailwind. Some of the functionality is still buggy, but for the most part, the website is up and running. Also, I decided against making a custom domain so that I wouldn't complicate things in the final week.
 
 <br>
 
@@ -41,9 +41,9 @@ This week, I installed and researched Tailwind CSS with my project. I'm working 
 
 - [X] Repo Created: Complete! 
 - [X] Milestone 1: Complete!
-- [ ] Milestone 2: In Progress
-- [ ] Milestone 3: Not Started
-- [ ] Milestone 4: Not Started
+- [X] Milestone 2: Complete!
+- [X] Milestone 3: Complete!
+- [X] Milestone 4: Complete!
 
 
 
