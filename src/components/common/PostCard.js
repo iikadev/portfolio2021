@@ -6,8 +6,14 @@ import { readingTime as readingTimeHelper } from '@tryghost/helpers'
 
 const PostCard = ({ post, postType }) => {
 	// the . = 'blog' which is the current directory
-    const url = `/${post.slug}/` 
+    let url = `` 
     const readingTime = readingTimeHelper(post)
+
+    if(post.tags[0] === 'blog') {
+        url = `/blog/${post.slug}`
+    } else {
+        url = `/projects/${post.slug}`
+    }
 
     return (
         <Link to={url} className="post-card">
